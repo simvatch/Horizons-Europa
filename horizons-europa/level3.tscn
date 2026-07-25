@@ -1,70 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdnx2je8cvlsg"]
 
-[ext_resource type="Texture2D" uid="uid://dg4hovxck1ptp" path="res://cute-monster-cartoon-character-for-children-illustration-vector.jpg" id="1_an40m"]
-[ext_resource type="Script" uid="uid://gkg3qe0ya8g2" path="res://monsterlevel3.gd" id="2_an40m"]
-[ext_resource type="Script" uid="uid://cuxv2nq4r7j6g" path="res://monster_2level3.gd" id="3_mu84n"]
-[ext_resource type="Texture2D" uid="uid://b1plmfhbpk553" path="res://icon.svg" id="4_rqrji"]
-[ext_resource type="Script" uid="uid://c0qgmjo7fbict" path="res://disc.gd" id="5_8x87a"]
+[ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_an40m"]
+[ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_mu84n"]
+[ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="3_bmsap"]
+[ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_rqrji"]
+[ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="5_8x87a"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1162.0
-offset_bottom = 647.0
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(249, 270)
-
-[node name="Lane1" type="ColorRect" parent="Node2D"]
-offset_top = -129.0
-offset_right = 913.0
-offset_bottom = -31.0
-color = Color(0.9891251, 0.38673392, 0.4269669, 1)
-
-[node name="Lane2" type="ColorRect" parent="Node2D"]
-offset_right = 914.0
-offset_bottom = 98.0
-color = Color(1, 0.7254902, 0.38431373, 1)
-
-[node name="Lane3" type="ColorRect" parent="Node2D"]
-offset_top = 129.0
-offset_right = 912.0
-offset_bottom = 227.0
-color = Color(0.9882353, 1, 0.42745098, 1)
-
-[node name="Lane4" type="ColorRect" parent="Node2D"]
-offset_top = 258.0
-offset_right = 917.0
-offset_bottom = 356.0
-color = Color(0, 1, 0.42745098, 1)
-
-[node name="Monster" type="TextureRect" parent="."]
-offset_left = 1156.0
-offset_top = 283.0
-offset_right = 1235.0
-offset_bottom = 358.0
+[node name="background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("1_an40m")
-expand_mode = 1
-script = ExtResource("2_an40m")
 
-[node name="Monster2" type="TextureRect" parent="."]
-offset_left = 1388.0
-offset_top = 408.0
-offset_right = 1467.0
-offset_bottom = 483.0
-texture = ExtResource("1_an40m")
-expand_mode = 1
-script = ExtResource("3_mu84n")
-
-[node name="Disc" type="TextureRect" parent="."]
-offset_left = 161.0
-offset_top = 413.0
-offset_right = 243.0
-offset_bottom = 489.0
-texture = ExtResource("4_rqrji")
-expand_mode = 1
-script = ExtResource("5_8x87a")
+[node name="lanes" type="TextureRect" parent="."]
+offset_top = 166.0
+offset_right = 1456.0
+offset_bottom = 985.0
+texture = ExtResource("2_mu84n")
 
 [node name="Score" type="Label" parent="."]
 offset_left = 262.0
@@ -74,3 +28,12 @@ offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score:"
+
+[node name="monster_1" parent="." instance=ExtResource("3_bmsap")]
+position = Vector2(123, 343)
+
+[node name="attack" parent="." instance=ExtResource("4_rqrji")]
+position = Vector2(1296, 351)
+
+[node name="kill_line" parent="." instance=ExtResource("5_8x87a")]
+position = Vector2(1452, 561)
