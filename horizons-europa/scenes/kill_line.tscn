@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://lsj8panjfsyn"]
+
+[ext_resource type="Texture2D" uid="uid://c6d3pgnahrlp1" path="res://assets/bar.PNG" id="1_vq6rk"]
+[ext_resource type="Script" uid="uid://b6mdaqip2qmgd" path="res://scripts/kill_line_area.gd" id="2_caqd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caqd5"]
+atlas = ExtResource("1_vq6rk")
+region = Rect2(0, 0, 346, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mwcis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caqd5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq6rk"]
+size = Vector2(41, 760)
+
+[node name="kill_line" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mwcis")
+
+[node name="Area2D" type="Area2D" parent="." groups=["kill_line_area"]]
+script = ExtResource("2_caqd5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-11.5, 32)
+shape = SubResource("RectangleShape2D_vq6rk")
