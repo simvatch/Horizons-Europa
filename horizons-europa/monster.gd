@@ -71,10 +71,10 @@ func _process(delta):
 
 		Global.lives -= 1
 
-		if Global.lives <= 0:
+		if Global.score >= Global.score_needed[Global.level]:
 			Global.score = 0
 			Global.lives = 5
-			ScreenManager.fail_level()
+			get_tree().change_scene_to_file("res://levelpassed.tscn")
 			return
 
 		await get_tree().create_timer(1.0).timeout

@@ -1,7 +1,8 @@
 extends Node
 
-@export var lives = 5
-@export var score = 0
+var score = 0
+var lives = 5
+var level = 1
 
 var score_needed = {
 	1: 3,
