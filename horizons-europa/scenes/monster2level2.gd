@@ -5,7 +5,7 @@ extends Node2D
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")
 @onready var player = get_tree().get_first_node_in_group("player")
 
-@export var speed = 250
+@export var speed = 150
 
 var score = 0
 var start_position_x = 0
@@ -54,7 +54,7 @@ func _process(delta):
 		score += 1
 		score_ui.text = "Score: " + str(score)
 
-		if score >= 3:
+		if score >= 10:
 			score = 0
 			Global.lives = 5
 			get_tree().change_scene_to_file("res://levelpassed.tscn")

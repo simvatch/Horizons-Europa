@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6ogow010us60"]
+[gd_scene load_steps=8 format=3 uid="uid://c6ogow010us60"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_r6vdu"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_21xmu"]
 [ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="3_8i3m3"]
+[ext_resource type="Script" uid="uid://di3qgskslrv2m" path="res://scenes/monsterlevel2.gd" id="4_8i3m3"]
 [ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="4_rmy57"]
 [ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="5_qulpo"]
+[ext_resource type="Script" uid="uid://d0nay43bk2bxd" path="res://scenes/monster2level2.gd" id="5_rmy57"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
@@ -34,7 +36,14 @@ text = "Score:"
 metadata/_edit_use_anchors_ = true
 
 [node name="monster_1" parent="." groups=["player"] instance=ExtResource("3_8i3m3")]
-position = Vector2(-48, 344)
+position = Vector2(-115, 349)
+script = ExtResource("4_8i3m3")
+speed = 350
+
+[node name="monster_2" parent="." groups=["monster_1_area", "monster_1_sprite"] instance=ExtResource("3_8i3m3")]
+position = Vector2(-419, 655)
+script = ExtResource("5_rmy57")
+speed = 150
 
 [node name="kill_line" parent="." instance=ExtResource("4_rmy57")]
 position = Vector2(1464, 540)
