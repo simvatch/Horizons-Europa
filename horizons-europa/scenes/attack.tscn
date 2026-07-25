@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjg5bgjk8s7np"]
+[gd_scene load_steps=7 format=3 uid="uid://cjg5bgjk8s7np"]
 
+[ext_resource type="Script" uid="uid://c0qgmjo7fbict" path="res://disc.gd" id="1_6fs0s"]
 [ext_resource type="Texture2D" uid="uid://cq6rd2dk1qyui" path="res://assets/music_note_attack.PNG" id="1_jy1op"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_63pi1"]
@@ -40,8 +41,9 @@ func on_body_exited(body):
 radius = 8.041792
 
 [node name="attack" type="Node2D" groups=["attack"]]
+script = ExtResource("1_6fs0s")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monster_1_sprite"]]
 sprite_frames = SubResource("SpriteFrames_hqc8w")
 
 [node name="Area2D" type="Area2D" parent="." groups=["attack_area"]]

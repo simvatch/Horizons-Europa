@@ -29,9 +29,9 @@ position = Vector2(249, 270)
 [node name="Lane1" type="ColorRect" parent="Node2D"]
 visible = false
 offset_left = -249.0
-offset_top = 25.0
+offset_top = 38.0
 offset_right = 664.0
-offset_bottom = 123.0
+offset_bottom = 136.0
 color = Color(0.9891251, 0.38673392, 0.4269669, 1)
 metadata/_edit_use_anchors_ = true
 
