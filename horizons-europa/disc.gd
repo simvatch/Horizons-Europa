@@ -9,7 +9,6 @@ var moving = false
 var lane = 2
 var lane_cooldown = 0.0
 
-
 func _ready():
 	start_position = position
 
