@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var score_ui = $"../Score"
+@onready var health_bar = get_tree().get_first_node_in_group("health_bar")
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -56,7 +57,6 @@ func _process(delta):
 
 		if score >= 3:
 			score = 0
-			Global.lives = 5
 			get_tree().change_scene_to_file("res://levelpassed.tscn")
 			return
 
@@ -67,11 +67,11 @@ func _process(delta):
 		resetting = true
 		visible = false
 
-		Global.lives -= 1
+		health_bar.value -= 20
 
-		if Global.lives <= 0:
+		if health_bar.value <= 0:
 			score = 0
-			Global.lives = 5
+			health_bar.value = 100
 			ScreenManager.fail_level()
 			return
 

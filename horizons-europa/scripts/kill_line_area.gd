@@ -7,7 +7,6 @@ func _ready() -> void:
 	
 func on_body_entered(area):
 	if area.is_in_group("monster_1_area"):
-		print("kill line interact")
 		can_interact = true
 
 func on_body_exited(area):
