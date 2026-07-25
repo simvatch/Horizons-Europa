@@ -76,7 +76,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-48, 344)
 
 [node name="attack" parent="." instance=ExtResource("4_v38iq")]
-position = Vector2(1331, 343)
+position = Vector2(1272, 808)
 
 [node name="kill_line" parent="." instance=ExtResource("5_crycw")]
 position = Vector2(1464, 540)

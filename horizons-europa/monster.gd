@@ -12,10 +12,10 @@ extends Node2D
 var start_position_x = 0
 var resetting = false
 
-var lane1 = 25
-var lane2 = 176
-var lane3 = 328
-var lane4 = 489
+var lane1 = 343
+var lane2 = 499
+var lane3 = 650
+var lane4 = 808
 
 func _ready():
 	var lanes = [lane1, lane2, lane3, lane4]
@@ -35,12 +35,10 @@ func _process(delta):
 		score += 1
 		
 		score_ui.text = "Score: " + str(score)
-
 		await get_tree().create_timer(1.0).timeout
 		
-		position = start_position_x
+		position.x = start_position_x
 		position.y = [lane1, lane2, lane3, lane4].pick_random()
-
 		visible = true
 		resetting = false
 		
@@ -50,7 +48,7 @@ func _process(delta):
 		
 		await get_tree().create_timer(1.0).timeout
 		
-		position.x = 0
+		position.x = start_position_x
 		position.y = [lane1, lane2, lane3, lane4].pick_random()
-
 		visible = true
+		resetting = false
