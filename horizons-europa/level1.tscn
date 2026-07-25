@@ -33,11 +33,11 @@ theme_override_font_sizes/font_size = 30
 text = "Score:"
 metadata/_edit_use_anchors_ = true
 
-[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
-position = Vector2(-155, 344)
-
 [node name="kill_line" parent="." instance=ExtResource("5_crycw")]
 position = Vector2(1464, 540)
+
+[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
+position = Vector2(-155, 344)
 
 [node name="attack" parent="." instance=ExtResource("4_v38iq")]
 position = Vector2(1623, 791)

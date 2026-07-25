@@ -7,7 +7,6 @@ extends Node2D
 
 @export var speed = 250
 
-var score = 0
 var start_position_x = 0
 var resetting = false
 
@@ -34,8 +33,11 @@ func respawn():
 
 
 func _ready():
+	start_position_x = position.x
 	respawn()
-	score_ui.text = "Score: 0"
+
+	if Global.score == 0:
+		score_ui.text = "Score: 0"
 
 
 func _process(delta):
@@ -51,11 +53,11 @@ func _process(delta):
 		resetting = true
 		visible = false
 
-		score += 1
-		score_ui.text = "Score: " + str(score)
+		Global.score += 1
+		score_ui.text = "Score: " + str(Global.score)
 
-		if score >= 3:
-			score = 0
+		if Global.score >= Global.score_needed[Global.level]:
+			Global.score = 0
 			Global.lives = 5
 			get_tree().change_scene_to_file("res://levelpassed.tscn")
 			return
@@ -70,7 +72,7 @@ func _process(delta):
 		Global.lives -= 1
 
 		if Global.lives <= 0:
-			score = 0
+			Global.score = 0
 			Global.lives = 5
 			ScreenManager.fail_level()
 			return
