@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://j8v50j1n4ued"]
+[gd_scene load_steps=5 format=3 uid="uid://c6ogow010us60"]
 
-[ext_resource type="Texture2D" uid="uid://b1plmfhbpk553" path="res://icon.svg" id="1_dopym"]
-[ext_resource type="Script" uid="uid://c0qgmjo7fbict" path="res://disc.gd" id="2_ootpb"]
-[ext_resource type="Texture2D" uid="uid://dg4hovxck1ptp" path="res://cute-monster-cartoon-character-for-children-illustration-vector.jpg" id="3_v38iq"]
-[ext_resource type="Script" uid="uid://4rw6naa74gvh" path="res://monster.gd" id="4_v8kj3"]
+[ext_resource type="Texture2D" uid="uid://b1plmfhbpk553" path="res://icon.svg" id="1_8tcn8"]
+[ext_resource type="Script" uid="uid://c0qgmjo7fbict" path="res://disc.gd" id="2_r6vdu"]
+[ext_resource type="Texture2D" uid="uid://dg4hovxck1ptp" path="res://cute-monster-cartoon-character-for-children-illustration-vector.jpg" id="3_21xmu"]
+[ext_resource type="Script" uid="uid://4rw6naa74gvh" path="res://monster.gd" id="4_8i3m3"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
@@ -43,18 +43,18 @@ offset_left = 253.0
 offset_top = 411.0
 offset_right = 335.0
 offset_bottom = 487.0
-texture = ExtResource("1_dopym")
+texture = ExtResource("1_8tcn8")
 expand_mode = 1
-script = ExtResource("2_ootpb")
+script = ExtResource("2_r6vdu")
 
 [node name="Monster" type="TextureRect" parent="."]
 offset_left = 1156.0
 offset_top = 281.0
 offset_right = 1235.0
 offset_bottom = 356.0
-texture = ExtResource("3_v38iq")
+texture = ExtResource("3_21xmu")
 expand_mode = 1
-script = ExtResource("4_v8kj3")
+script = ExtResource("4_8i3m3")
 
 [node name="Score" type="Label" parent="."]
 offset_left = 262.0

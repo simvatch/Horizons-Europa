@@ -1,6 +1,7 @@
 extends TextureRect
 
 @export var speed = 400
+@export var rotation_speed = 5.0
 @export var lane_cooldown_time = 0.2
 
 var start_position: Vector2
@@ -11,7 +12,7 @@ var lane_cooldown = 0.0
 
 func _ready():
 	start_position = position
-
+	pivot_offset = size / 2
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -53,7 +54,9 @@ func _process(delta):
 
 	if moving:
 		position.x += speed * delta
+		rotation += rotation_speed * delta
 		
 		if position.x >= get_viewport_rect().size.x:
 			position = start_position
+			rotation = 0
 			moving = false
