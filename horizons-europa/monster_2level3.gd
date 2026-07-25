@@ -56,8 +56,8 @@ func _process(delta):
 		position = start_position
 		position.y = [lane1, lane2, lane3, lane4].pick_random()
 
-		visible = true
-		resetting = false
+	 	visible = true
+	 	resetting = false
 		
 		if Global.lives <= 0:
 			Global.lives = 5
