@@ -22,6 +22,16 @@ config/icon="res://icon.svg"
 [gui]
 
 common/snap_controls_to_pixels=false
+[autoload]
+
+ScreenManager="*res://ScreenManager.gd"
+Global="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 
 [input]
 

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjg5bgjk8s7np"]
+
+[ext_resource type="Script" uid="uid://c0qgmjo7fbict" path="res://disc.gd" id="1_6fs0s"]
+[ext_resource type="Texture2D" uid="uid://cq6rd2dk1qyui" path="res://assets/music_note_attack.PNG" id="1_jy1op"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63pi1"]
+atlas = ExtResource("1_jy1op")
+region = Rect2(0, 0, 285, 151)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqc8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63pi1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_nursx"]
+script/source = "extends Area2D
+
+var can_interact = false
+
+func _ready() -> void:
+	self.area_entered.connect(on_body_entered)
+	self.area_entered.connect(on_body_exited)
+	
+func on_body_entered(body):
+	if body.is_in_group(\"monster_1_area\"):
+		print(\"attack interact\")
+		can_interact = true
+
+func on_body_exited(body):
+	if body.is_in_group(\"monster_1_area\"):
+		can_interact = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7yfhp"]
+radius = 8.041792
+
+[node name="attack" type="Node2D" groups=["attack"]]
+script = ExtResource("1_6fs0s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monster_1_sprite"]]
+sprite_frames = SubResource("SpriteFrames_hqc8w")
+
+[node name="Area2D" type="Area2D" parent="." groups=["attack_area"]]
+script = SubResource("GDScript_nursx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-18.999998, 0)
+scale = Vector2(13.680001, 8.5199995)
+shape = SubResource("CircleShape2D_7yfhp")
