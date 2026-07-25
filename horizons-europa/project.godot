@@ -19,6 +19,9 @@ run/main_scene="uid://dvtkvbnqswjed"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[gui]
+
+common/snap_controls_to_pixels=false
 [autoload]
 
 ScreenManager="*res://ScreenManager.gd"
