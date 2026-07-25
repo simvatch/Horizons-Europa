@@ -1,54 +1,79 @@
 extends Node2D
 
-@onready var score_ui = get_tree().get_first_node_in_group("score_ui")
-@onready var moster_1_sprite = get_tree().get_first_node_in_group("monster_1_sprite")
+@onready var score_ui = $"../Score"
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")
-@onready var attack = get_tree().get_first_node_in_group("attack")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 @export var speed = 250
-@export var score = 0
 
+var score = 0
 var start_position_x = 0
 var resetting = false
 
-var lane1 = 343
-var lane2 = 499
-var lane3 = 650
-var lane4 = 808
+const LANE_Y = {
+	1: 343,
+	2: 499,
+	3: 650,
+	4: 804
+}
+
+var lane = 1
+
+
+func set_lane(new_lane):
+	lane = new_lane
+	position.y = LANE_Y[lane]
+
+
+func respawn():
+	position.x = start_position_x
+	set_lane(randi_range(1, 4))
+	visible = true
+	resetting = false
+
 
 func _ready():
-	var lanes = [lane1, lane2, lane3, lane4]
-	position.y = lanes.pick_random()
-	
-	self.position.x = 0
+	respawn()
+	score_ui.text = "Score: 0"
+
 
 func _process(delta):
-	self.position.x += speed * delta
-	
+	position.x += speed * delta
+
 	if resetting:
 		return
-	
-	if attack_area.can_interact:
+
+	if player == null:
+		return
+
+	if attack_area.can_interact and lane == player.lane:
 		resetting = true
 		visible = false
+
 		score += 1
-		
 		score_ui.text = "Score: " + str(score)
+
+		if score >= 3:
+			score = 0
+			Global.lives = 5
+			get_tree().change_scene_to_file("res://levelpassed.tscn")
+			return
+
 		await get_tree().create_timer(1.0).timeout
-		
-		position.x = start_position_x
-		position.y = [lane1, lane2, lane3, lane4].pick_random()
-		visible = true
-		resetting = false
-		
-	elif kill_line_area.can_interact:
+		respawn()
+
+	elif kill_line_area.can_interact and lane == player.lane:
 		resetting = true
 		visible = false
-		
+
+		Global.lives -= 1
+
+		if Global.lives <= 0:
+			score = 0
+			Global.lives = 5
+			get_tree().change_scene_to_file("res://levelfailed.tscn")
+			return
+
 		await get_tree().create_timer(1.0).timeout
-		
-		position.x = start_position_x
-		position.y = [lane1, lane2, lane3, lane4].pick_random()
-		visible = true
-		resetting = false
+		respawn()

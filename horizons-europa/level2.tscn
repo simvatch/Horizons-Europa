@@ -3,24 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_r6vdu"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_21xmu"]
 [ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="3_8i3m3"]
-[ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_rmy57"]
-[ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="5_qulpo"]
+[ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="4_rmy57"]
+[ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="5_qulpo"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
 
 [node name="background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_right = 1921.0
+offset_bottom = 1080.0
+size_flags_horizontal = 0
 texture = ExtResource("1_r6vdu")
 
 [node name="lanes" type="TextureRect" parent="."]
-offset_top = 163.0
-offset_right = 1456.0
-offset_bottom = 982.0
+offset_left = 2.0
+offset_top = 166.0
+offset_right = 1458.0
+offset_bottom = 985.0
 texture = ExtResource("2_21xmu")
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="." groups=["score_ui"]]
 offset_left = 262.0
 offset_top = 21.0
 offset_right = 449.0
@@ -28,12 +31,13 @@ offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score:"
+metadata/_edit_use_anchors_ = true
 
-[node name="monster_1" parent="." instance=ExtResource("3_8i3m3")]
-position = Vector2(120, 335)
+[node name="monster_1" parent="." groups=["player"] instance=ExtResource("3_8i3m3")]
+position = Vector2(-48, 344)
 
-[node name="attack" parent="." instance=ExtResource("4_rmy57")]
-position = Vector2(1318, 337)
-
-[node name="kill_line" parent="." instance=ExtResource("5_qulpo")]
+[node name="kill_line" parent="." instance=ExtResource("4_rmy57")]
 position = Vector2(1464, 540)
+
+[node name="attack" parent="." instance=ExtResource("5_qulpo")]
+position = Vector2(1623, 791)
