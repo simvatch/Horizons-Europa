@@ -4,7 +4,7 @@ extends TextureRect
 @export var rotation_speed = 5.0
 @export var lane_cooldown_time = 0.2
 
-var start_position: Vector2
+var start_position = 155
 var moving = false
 var lane = 2
 var lane_cooldown = 0.0

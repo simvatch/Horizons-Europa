@@ -19,6 +19,16 @@ run/main_scene="uid://dvtkvbnqswjed"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScreenManager="*res://ScreenManager.gd"
+Global="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [input]
 
 Enter={

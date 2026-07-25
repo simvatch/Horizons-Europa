@@ -1,6 +1,6 @@
 extends TextureRect
 
-@export var speed = 250
+@export var speed = 150
 @export var score = 0
 
 var start_position = 411
@@ -62,5 +62,7 @@ func _process(delta):
 		if Global.lives <= 0:
 			ScreenManager.fail_level()
 
-	if score >= 3:
+	if score >= 10:
 		get_tree().change_scene_to_file("res://levelpassed.tscn")
+		
+	

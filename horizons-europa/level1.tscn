@@ -11,6 +11,7 @@ position = Vector2(-1, 0)
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1162.0
 offset_bottom = 647.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(249, 270)
@@ -20,32 +21,27 @@ offset_top = -129.0
 offset_right = 913.0
 offset_bottom = -31.0
 color = Color(0.9891251, 0.38673392, 0.4269669, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lane2" type="ColorRect" parent="Node2D"]
 offset_right = 914.0
 offset_bottom = 98.0
 color = Color(1, 0.7254902, 0.38431373, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lane3" type="ColorRect" parent="Node2D"]
 offset_top = 129.0
 offset_right = 912.0
 offset_bottom = 227.0
 color = Color(0.9882353, 1, 0.42745098, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lane4" type="ColorRect" parent="Node2D"]
 offset_top = 258.0
 offset_right = 917.0
 offset_bottom = 356.0
 color = Color(0, 1, 0.42745098, 1)
-
-[node name="Disc" type="TextureRect" parent="."]
-offset_left = 253.0
-offset_top = 411.0
-offset_right = 335.0
-offset_bottom = 487.0
-texture = ExtResource("1_dopym")
-expand_mode = 1
-script = ExtResource("2_ootpb")
+metadata/_edit_use_anchors_ = true
 
 [node name="Monster" type="TextureRect" parent="."]
 offset_left = 1156.0
@@ -55,6 +51,17 @@ offset_bottom = 356.0
 texture = ExtResource("3_v38iq")
 expand_mode = 1
 script = ExtResource("4_v8kj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Disc" type="TextureRect" parent="."]
+offset_left = 155.0
+offset_top = 411.0
+offset_right = 237.0
+offset_bottom = 487.0
+texture = ExtResource("1_dopym")
+expand_mode = 1
+script = ExtResource("2_ootpb")
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="Label" parent="."]
 offset_left = 262.0
@@ -64,3 +71,4 @@ offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score:"
+metadata/_edit_use_anchors_ = true

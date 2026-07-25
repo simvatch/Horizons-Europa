@@ -1,6 +1,6 @@
 extends TextureRect
 
-@export var speed = 250
+@export var speed = 300
 @export var score = 0
 
 var start_position = 411
@@ -48,7 +48,7 @@ func _process(delta):
 	elif global_position.x <= $"../Node2D".global_position.x:
 		resetting = true
 		visible = false
-		
+
 		Global.lives -= 1
 
 		await get_tree().create_timer(1.0).timeout
@@ -62,5 +62,5 @@ func _process(delta):
 		if Global.lives <= 0:
 			ScreenManager.fail_level()
 
-	if score >= 3:
+	if score >= 10:
 		get_tree().change_scene_to_file("res://levelpassed.tscn")
