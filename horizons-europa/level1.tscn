@@ -23,45 +23,6 @@ offset_right = 1458.0
 offset_bottom = 985.0
 texture = ExtResource("2_crycw")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(249, 270)
-
-[node name="Lane1" type="ColorRect" parent="Node2D"]
-visible = false
-offset_left = -249.0
-offset_top = 38.0
-offset_right = 664.0
-offset_bottom = 136.0
-color = Color(0.9891251, 0.38673392, 0.4269669, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Lane2" type="ColorRect" parent="Node2D"]
-visible = false
-offset_left = -245.0
-offset_top = 176.0
-offset_right = 669.0
-offset_bottom = 274.0
-color = Color(1, 0.7254902, 0.38431373, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Lane3" type="ColorRect" parent="Node2D"]
-visible = false
-offset_left = -249.0
-offset_top = 328.0
-offset_right = 663.0
-offset_bottom = 426.0
-color = Color(0.9882353, 1, 0.42745098, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Lane4" type="ColorRect" parent="Node2D"]
-visible = false
-offset_left = -250.0
-offset_top = 489.0
-offset_right = 667.0
-offset_bottom = 587.0
-color = Color(0, 1, 0.42745098, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="Score" type="Label" parent="." groups=["score_ui"]]
 offset_left = 262.0
 offset_top = 21.0

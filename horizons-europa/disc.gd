@@ -49,12 +49,10 @@ func _unhandled_input(event):
 func _process(delta):
 	if lane_cooldown > 0:
 		lane_cooldown -= delta
-
 	if moving:
-		position.x += speed * delta
-		rotation += rotation_speed * delta
+		position.x -= speed * delta
 		
-		if position.x >= get_viewport_rect().size.x:
+		if position.x <= 0:
 			position = start_position
 			rotation = 0
 			moving = false
