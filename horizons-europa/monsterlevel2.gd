@@ -60,6 +60,8 @@ func _process(delta):
 		resetting = false
 		
 		if Global.lives <= 0:
+			Global.lives = 5
+			score = 0
 			ScreenManager.fail_level()
 
 	if score >= 10:
