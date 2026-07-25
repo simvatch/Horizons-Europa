@@ -20,29 +20,29 @@ func _unhandled_input(event):
 		
 		if event.pressed and event.keycode == KEY_UP and !moving and lane_cooldown <= 0:
 			if lane == 2:
-				position.y = 154
+				position.y = 343
 				lane = 1
 				lane_cooldown = lane_cooldown_time
 			elif lane == 3:
-				position.y = 282
+				position.y = 499
 				lane = 2
 				lane_cooldown = lane_cooldown_time
 			elif lane == 4:
-				position.y = 411
+				position.y = 650
 				lane = 3
 				lane_cooldown = lane_cooldown_time
 
 		if event.pressed and event.keycode == KEY_DOWN and !moving and lane_cooldown <= 0:
 			if lane == 1:
-				position.y = 282
+				position.y = 499
 				lane = 2
 				lane_cooldown = lane_cooldown_time
 			elif lane == 2:
-				position.y = 411
+				position.y = 650
 				lane = 3
 				lane_cooldown = lane_cooldown_time
 			elif lane == 3:
-				position.y = 540
+				position.y = 808
 				lane = 4
 				lane_cooldown = lane_cooldown_time
 
