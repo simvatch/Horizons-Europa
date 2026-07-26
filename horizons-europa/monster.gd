@@ -16,6 +16,7 @@ var lane := 1
 var lane_switch_cooldown := 0.0
 var is_slowest := false
 
+var moving = true
 
 const LANE_Y = {
 	1: 343,
@@ -38,7 +39,8 @@ func _process(delta):
 	if resetting:
 		return
 
-	position.x += speed * delta
+	if moving:
+		position.x += speed * delta
 
 	if lane_switch_cooldown > 0:
 		lane_switch_cooldown -= delta
@@ -73,6 +75,7 @@ func set_lane(new_lane: int):
 
 
 func respawn():
+	moving = true
 	position.x = start_position_x
 	set_lane(randi_range(1, 4))
 	visible = true
@@ -80,6 +83,7 @@ func respawn():
 
 
 func handle_hit():
+	await explosion()
 	resetting = true
 	visible = false
 
@@ -92,6 +96,7 @@ func handle_hit():
 	respawn()
 
 func handle_pass():
+	await explosion()
 	resetting = true
 	visible = false
 
@@ -100,6 +105,7 @@ func handle_pass():
 
 
 func handle_miss():
+	await explosion()
 	resetting = true
 	visible = false
 
@@ -118,3 +124,9 @@ func handle_miss():
 
 	await get_tree().create_timer(1.0).timeout
 	respawn()
+
+func explosion():
+	moving = false
+	sprite.play("explode")
+	await sprite.animation_finished
+	sprite.play("default")
