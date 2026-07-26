@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var score_ui = $"../Score"
+@onready var score_ui = get_tree().get_first_node_in_group("score_ui")
+@onready var sprite = $AnimatedSprite2D
 @onready var health_bar = get_tree().get_first_node_in_group("health_bar")
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")

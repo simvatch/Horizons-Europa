@@ -8,11 +8,12 @@ const LANE_Y = [343.0, 499.0, 650.0, 807.0]
 
 var moving := false
 var lane_cooldown := 0.0
-var start_position: Vector2
+var start_position = 1620
 
 func _ready():
 	start_position = position
 	position.y = LANE_Y[lane - 1]
+
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
