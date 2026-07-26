@@ -30,15 +30,15 @@ theme_override_font_sizes/font_size = 30
 text = "Score:"
 
 [node name="monster_1" parent="." instance=ExtResource("3_bmsap")]
-position = Vector2(123, 343)
+position = Vector2(-300, 343)
 speed = 350
 
 [node name="monster_2" parent="." instance=ExtResource("3_bmsap")]
-position = Vector2(-195, 489)
-speed = 300
+position = Vector2(-600, 489)
+speed = 100.0
 
 [node name="monster_3" parent="." groups=["slowest_monster"] instance=ExtResource("3_bmsap")]
-position = Vector2(-187, 680)
+position = Vector2(-900, 680)
 speed = 200
 
 [node name="attack" parent="." groups=["player"] instance=ExtResource("4_rqrji")]
