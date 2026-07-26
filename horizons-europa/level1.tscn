@@ -1,18 +1,8 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=9 format=3 uid="uid://j8v50j1n4ued"]
-=======
-[gd_scene load_steps=7 format=3 uid="uid://j8v50j1n4ued"]
->>>>>>> Stashed changes
+[gd_scene load_steps=6 format=3 uid="uid://j8v50j1n4ued"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_v8kj3"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_crycw"]
-[ext_resource type="PackedScene" uid="uid://b2i6h3jlc7uhg" path="res://scenes/UI.tscn" id="3_crycw"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://bce0oj2ofnx80" path="res://assets/otter.PNG" id="3_i2041"]
-=======
->>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_v38iq"]
-[ext_resource type="PackedScene" uid="uid://cvjekn0sr1kd8" path="res://scenes/note.tscn" id="4_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="5_crycw"]
 [ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="5_v8kj3"]
 
@@ -33,40 +23,22 @@ offset_right = 1458.0
 offset_bottom = 985.0
 texture = ExtResource("2_crycw")
 
-<<<<<<< Updated upstream
-[node name="mascot" type="TextureRect" parent="."]
-offset_left = 1542.0
-offset_top = 255.0
-offset_right = 1922.0
-offset_bottom = 1080.0
-texture = ExtResource("3_i2041")
-=======
-[node name="Control" parent="." instance=ExtResource("3_crycw")]
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(249, 270)
->>>>>>> Stashed changes
-
-[node name="note" parent="." instance=ExtResource("4_xy4tn")]
-position = Vector2(1608, 479)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("3_crycw")]
-
 [node name="Score" type="Label" parent="." groups=["score_ui"]]
-offset_left = 525.0
-offset_top = 101.0
-offset_right = 712.0
-offset_bottom = 145.0
+offset_left = 262.0
+offset_top = 21.0
+offset_right = 449.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score:"
 metadata/_edit_use_anchors_ = true
 
-[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
-position = Vector2(-155, 344)
-
 [node name="kill_line" parent="." instance=ExtResource("5_crycw")]
 position = Vector2(1464, 540)
+
+[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
+position = Vector2(-155, 344)
+speed = 350
 
 [node name="attack" parent="." instance=ExtResource("4_v38iq")]
 position = Vector2(1623, 791)
