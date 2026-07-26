@@ -13,6 +13,7 @@ var score := 0
 var start_position_x := 0.0
 var resetting := false
 var lane := 1
+var moving = true
 
 const LANE_Y = {
 	1: 343,
@@ -34,7 +35,8 @@ func _process(delta):
 	if resetting:
 		return
 
-	position.x += speed * delta
+	if moving:
+		position.x += speed * delta
 
 	if player == null:
 		return
@@ -105,6 +107,6 @@ func handle_miss():
 	respawn()
 	
 func explosion():
-	var current_position_x = self.position.x
+	moving = false
 	sprite.play("explode")
 	await sprite.animation_finished
