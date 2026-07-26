@@ -13,9 +13,7 @@ var score := 0
 var start_position_x := 0.0
 var resetting := false
 var lane := 1
-
-var moving = true
-h_cooldown := 0.0
+var lane_switch_cooldown := 0.0
 var is_slowest := false
 
 
@@ -40,8 +38,7 @@ func _process(delta):
 	if resetting:
 		return
 
-	if moving:
-		position.x += speed * delta
+	position.x += speed * delta
 
 	if lane_switch_cooldown > 0:
 		lane_switch_cooldown -= delta
@@ -58,7 +55,7 @@ func _process(delta):
 
 	# Successful hit
 	if attack_area.can_interact and lane == player.lane:
-		await explosion()
+		sprite.play("explode")
 		handle_hit()
 
 	# Missed note in correct lane
@@ -80,6 +77,7 @@ func respawn():
 	set_lane(randi_range(1, 4))
 	visible = true
 	resetting = false
+
 
 func handle_hit():
 	resetting = true
@@ -120,8 +118,3 @@ func handle_miss():
 
 	await get_tree().create_timer(1.0).timeout
 	respawn()
-	
-func explosion():
-	moving = false
-	sprite.play("explode")
-	await sprite.animation_finished
