@@ -56,6 +56,7 @@ func _process(delta):
 		score += 1
 		score_ui.text = "Score: " + str(score)
 
+<<<<<<< Updated upstream
 		if score >= 3:
 			score = 0
 			get_tree().change_scene_to_file("res://levelpassed.tscn")
@@ -65,6 +66,17 @@ func _process(delta):
 		respawn()
 
 	elif kill_line_area.can_interact and lane == player.lane:
+=======
+		await get_tree().create_timer(1.0).timeout
+
+		position = start_position_x
+		position.y = [lane1, lane2, lane3, lane4].pick_random()
+
+		visible = true
+		resetting = false
+
+	elif kill_line_area.can_interact:
+>>>>>>> Stashed changes
 		resetting = true
 		visible = false
 
