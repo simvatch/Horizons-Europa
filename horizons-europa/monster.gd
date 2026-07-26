@@ -1,17 +1,17 @@
 extends Node2D
 
 @onready var score_ui = get_tree().get_first_node_in_group("score_ui")
-@onready var sprite = $AnimatedSprite2D
 @onready var health_bar = get_tree().get_first_node_in_group("health_bar")
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")
 @onready var player = get_tree().get_first_node_in_group("player")
 
-@export var speed = 250
+@export var speed := 250.0
 
-var score = 0
-var start_position_x = 0
-var resetting = false
+var score := 0
+var start_position_x := 0.0
+var resetting := false
+var lane := 1
 
 const LANE_Y = {
 	1: 343,
@@ -20,10 +20,38 @@ const LANE_Y = {
 	4: 804
 }
 
-var lane = 1
+
+func _ready():
+	start_position_x = position.x
+	respawn()
+
+	if score_ui:
+		score_ui.text = "Score: 0"
 
 
-func set_lane(new_lane):
+func _process(delta):
+	if resetting:
+		return
+
+	position.x += speed * delta
+
+	if player == null:
+		return
+
+	# Successful hit
+	if attack_area.can_interact and lane == player.lane:
+		handle_hit()
+
+	# Missed note in correct lane
+	elif kill_line_area.can_interact and lane == player.lane:
+		handle_pass()
+
+	# Missed note entirely
+	elif kill_line_area.can_interact:
+		handle_miss()
+
+
+func set_lane(new_lane: int):
 	lane = new_lane
 	position.y = LANE_Y[lane]
 
@@ -35,58 +63,43 @@ func respawn():
 	resetting = false
 
 
-func _ready():
-	respawn()
-	score_ui.text = "Score: 0"
+func handle_hit():
+	resetting = true
+	visible = false
 
+	score += 1
 
-func _process(delta):
-	position.x += speed * delta
-
-	if resetting:
-		return
-
-	if player == null:
-		return
-
-	if attack_area.can_interact and lane == player.lane:
-		resetting = true
-		visible = false
-
-		score += 1
+	if score_ui:
 		score_ui.text = "Score: " + str(score)
 
-<<<<<<< Updated upstream
-		if score >= 3:
-			score = 0
-			get_tree().change_scene_to_file("res://levelpassed.tscn")
-			return
+	await get_tree().create_timer(1.0).timeout
+	respawn()
 
-		await get_tree().create_timer(1.0).timeout
-		respawn()
 
-	elif kill_line_area.can_interact and lane == player.lane:
-=======
-		await get_tree().create_timer(1.0).timeout
+func handle_pass():
+	resetting = true
+	visible = false
 
-		position = start_position_x
-		position.y = [lane1, lane2, lane3, lane4].pick_random()
+	await get_tree().create_timer(1.0).timeout
+	respawn()
 
-		visible = true
-		resetting = false
 
-	elif kill_line_area.can_interact:
->>>>>>> Stashed changes
-		resetting = true
-		visible = false
+func handle_miss():
+	resetting = true
+	visible = false
 
+	if health_bar:
 		health_bar.value -= 20
 
 		if health_bar.value <= 0:
 			score = 0
 			health_bar.value = 100
+
+			if score_ui:
+				score_ui.text = "Score: 0"
+
 			ScreenManager.fail_level()
 			return
 
-		await get_tree().create_timer(1.0).timeout
-		respawn()
+	await get_tree().create_timer(1.0).timeout
+	respawn()
