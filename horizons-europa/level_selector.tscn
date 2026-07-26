@@ -53,9 +53,9 @@ metadata/_custom_type_script = "uid://dmc2o3hea6nxj"
 [node name="Control" type="Control" parent="BoxContainer/CarouselContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -266.0365
+offset_left = -370.6432
 offset_top = -20.0
-offset_right = -226.0365
+offset_right = -330.6432
 offset_bottom = 20.0
 metadata/_edit_use_anchors_ = true
 
@@ -63,15 +63,15 @@ metadata/_edit_use_anchors_ = true
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -5.0547385
-anchor_top = -6.4100075
+anchor_left = -10.285074
+anchor_top = -11.737842
 anchor_right = -10.285074
 anchor_bottom = -11.737842
-offset_left = 202.18954
-offset_top = -9.599701
-offset_right = 943.47595
-offset_bottom = 735.5137
-pivot_offset = Vector2(266.0365, 266)
+offset_left = 411.40295
+offset_top = 96.95697
+offset_right = 1152.6893
+offset_bottom = 842.0704
+pivot_offset = Vector2(370.6432, 372.5567)
 texture_normal = ExtResource("3_2db0o")
 ignore_texture_size = true
 stretch_mode = 0
@@ -82,16 +82,38 @@ modulate = Color(1, 1, 1, 0.65)
 z_index = -1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -12.965317
-anchor_top = -11.0960245
+anchor_left = -26.015224
+anchor_top = -23.86774
 anchor_right = -26.015224
 anchor_bottom = -23.86774
-offset_left = 1070.6857
-offset_top = 293.83975
-offset_right = 1893.6779
-offset_bottom = 1104.7108
+offset_left = 1801.8954
+offset_top = 549.27405
+offset_right = 2624.8877
+offset_bottom = 1360.1451
 scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(150.49792, 150.00122)
+pivot_offset = Vector2(411.49615, 405.43555)
+focus_mode = 0
+mouse_filter = 2
+texture_normal = ExtResource("4_sn3u0")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="level3" type="TextureButton" parent="BoxContainer/CarouselContainer/Control"]
+modulate = Color(1, 1, 1, 0.3)
+z_index = -2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -26.015224
+anchor_top = -23.86774
+anchor_right = -26.015224
+anchor_bottom = -23.86774
+offset_left = 2644.8877
+offset_top = 549.27405
+offset_right = 3467.88
+offset_bottom = 1360.1451
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(411.49615, 405.43555)
 focus_mode = 0
 mouse_filter = 2
 texture_normal = ExtResource("4_sn3u0")
@@ -110,7 +132,18 @@ text = "Pick a song"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 742.0
+offset_top = 887.0
+offset_right = 1108.0
+offset_bottom = 1013.0
+theme = ExtResource("3_7d84g")
+text = "Enter level"
+
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level3" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
