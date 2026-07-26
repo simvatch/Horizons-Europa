@@ -15,7 +15,7 @@ var resetting := false
 var lane := 1
 var lane_switch_cooldown := 0.0
 var is_slowest := false
-
+var moving = true
 
 const LANE_Y = {
 	1: 343,
@@ -35,10 +35,8 @@ func _ready():
 
 
 func _process(delta):
-	if resetting:
-		return
-
-	position.x += speed * delta
+	if moving:
+		position.x += speed * delta
 
 	if lane_switch_cooldown > 0:
 		lane_switch_cooldown -= delta
@@ -50,7 +48,7 @@ func _process(delta):
 			set_lane(new_lane)
 			lane_switch_cooldown = 1.0
 
-	if player == null:
+	if resetting or player == null:
 		return
 
 	# Successful hit
@@ -73,6 +71,7 @@ func set_lane(new_lane: int):
 
 
 func respawn():
+	moving = true
 	position.x = start_position_x
 	set_lane(randi_range(1, 4))
 	visible = true
@@ -81,6 +80,7 @@ func respawn():
 
 func handle_hit():
 	resetting = true
+	await explosion()
 	visible = false
 
 	score += 1
@@ -88,20 +88,22 @@ func handle_hit():
 	if score_ui:
 		score_ui.text = "Score: " + str(score)
 
-	await get_tree().create_timer(1.0).timeout
+	if get_tree():
+		await get_tree().create_timer(1.0).timeout
 	respawn()
 
 func handle_pass():
 	resetting = true
+	await explosion()
 	visible = false
 
-	await get_tree().create_timer(1.0).timeout
+	if get_tree():
+		await get_tree().create_timer(1.0).timeout
 	respawn()
 
 
 func handle_miss():
 	resetting = true
-	visible = false
 
 	if health_bar:
 		health_bar.value -= 20
@@ -116,5 +118,16 @@ func handle_miss():
 			ScreenManager.fail_level()
 			return
 
-	await get_tree().create_timer(1.0).timeout
+	await explosion()
+	visible = false
+
+	if get_tree():
+		await get_tree().create_timer(1.0).timeout
 	respawn()
+
+func explosion():
+	moving = false
+	sprite.play("explode")
+	await sprite.animation_finished
+	sprite.play("default")
+	moving = true
