@@ -25,9 +25,26 @@ func _on_level_2_pressed() -> void:
 	add_child(readybtn2)
 	
 	
+func _on_level_3_pressed() -> void:
+	var readybtn3 = Button.new()
+	readybtn3.text = "Enter Level"
+	readybtn3.pressed.connect(_readybtn3_pressed)
+	readybtn3.position = Vector2(825, 900)  
+	readybtn3.size = Vector2(160, 40)
+	readybtn3.theme = btnTheme
+	add_child(readybtn3)
+
+
+func _readybtn3_pressed() -> void:
+	get_tree().change_scene_to_file("res://level3.tscn")
+	
+
+	
+	
 
 func _readybtn2_pressed() -> void:
 	get_tree().change_scene_to_file("res://level2.tscn")
+
 
 func _on_left_pressed() -> void:
 	$BoxContainer/CarouselContainer._left()

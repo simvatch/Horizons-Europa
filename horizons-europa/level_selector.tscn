@@ -145,5 +145,5 @@ text = "Enter level"
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level3" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="BoxContainer/CarouselContainer/Control/level3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
