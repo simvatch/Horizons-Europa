@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://j8v50j1n4ued"]
+[gd_scene load_steps=9 format=3 uid="uid://j8v50j1n4ued"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_v8kj3"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_crycw"]
+[ext_resource type="PackedScene" uid="uid://b2i6h3jlc7uhg" path="res://scenes/UI.tscn" id="3_crycw"]
 [ext_resource type="Texture2D" uid="uid://bce0oj2ofnx80" path="res://assets/otter.PNG" id="3_i2041"]
 [ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_v38iq"]
 [ext_resource type="PackedScene" uid="uid://cvjekn0sr1kd8" path="res://scenes/note.tscn" id="4_xy4tn"]
@@ -10,6 +11,8 @@
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
+
+[node name="health bar" parent="." instance=ExtResource("3_crycw")]
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = 1.0
@@ -48,9 +51,8 @@ position = Vector2(1601, 489)
 [node name="kill_line" parent="." instance=ExtResource("5_crycw")]
 position = Vector2(1464, 540)
 
-[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
-position = Vector2(-155, 344)
-speed = 350
-
 [node name="attack" parent="." instance=ExtResource("4_v38iq")]
 position = Vector2(1623, 791)
+
+[node name="monster_1" parent="." groups=["player"] instance=ExtResource("5_v8kj3")]
+position = Vector2(-155, 344)

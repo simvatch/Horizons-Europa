@@ -42,7 +42,7 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_qgf6a")
 }],
-"loop": true,
+"loop": false,
 "name": &"explode",
 "speed": 5.0
 }]
@@ -54,8 +54,10 @@ script = ExtResource("1_mmj5x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monster_sprite"]]
 sprite_frames = SubResource("SpriteFrames_5jiyi")
+animation = &"explode"
 autoplay = "default"
-frame_progress = 0.7737901
+frame = 2
+frame_progress = 1.0
 speed_scale = 1.29
 
 [node name="Area2D" type="Area2D" parent="." groups=["monster_1_area"]]

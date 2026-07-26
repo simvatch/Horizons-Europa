@@ -41,7 +41,7 @@ func _process(delta):
 
 	# Successful hit
 	if attack_area.can_interact and lane == player.lane:
-		sprite.play("explode")
+		await explosion()
 		handle_hit()
 
 	# Missed note in correct lane
@@ -64,7 +64,6 @@ func respawn():
 	visible = true
 	resetting = false
 
-
 func handle_hit():
 	resetting = true
 	visible = false
@@ -76,7 +75,6 @@ func handle_hit():
 
 	await get_tree().create_timer(1.0).timeout
 	respawn()
-
 
 func handle_pass():
 	resetting = true
@@ -105,3 +103,8 @@ func handle_miss():
 
 	await get_tree().create_timer(1.0).timeout
 	respawn()
+	
+func explosion():
+	var current_position_x = self.position.x
+	sprite.play("explode")
+	await sprite.animation_finished
