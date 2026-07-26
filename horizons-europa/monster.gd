@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var sprite = get_tree().get_first_node_in_group("monster_sprite")
 @onready var score_ui = get_tree().get_first_node_in_group("score_ui")
 @onready var health_bar = get_tree().get_first_node_in_group("health_bar")
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
@@ -40,6 +41,7 @@ func _process(delta):
 
 	# Successful hit
 	if attack_area.can_interact and lane == player.lane:
+		sprite.play("explode")
 		handle_hit()
 
 	# Missed note in correct lane

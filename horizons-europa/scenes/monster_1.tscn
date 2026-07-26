@@ -52,11 +52,10 @@ animations = [{
 [node name="monster_1" type="Node2D" groups=["monster_1"]]
 script = ExtResource("1_mmj5x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["monster_sprite"]]
 sprite_frames = SubResource("SpriteFrames_5jiyi")
-animation = &"explode"
 autoplay = "default"
-frame_progress = 0.58837074
+frame_progress = 0.7737901
 speed_scale = 1.29
 
 [node name="Area2D" type="Area2D" parent="." groups=["monster_1_area"]]
