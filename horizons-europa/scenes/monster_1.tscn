@@ -1,11 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg6kj1jmnlfx8"]
+[gd_scene load_steps=12 format=3 uid="uid://cg6kj1jmnlfx8"]
 
 [ext_resource type="Script" uid="uid://4rw6naa74gvh" path="res://monster.gd" id="1_mmj5x"]
 [ext_resource type="Texture2D" uid="uid://c73xyo6iu0rus" path="res://assets/monster_1.PNG" id="2_8chg6"]
+[ext_resource type="Texture2D" uid="uid://bs5ask1uphva" path="res://assets/explode1.PNG" id="3_5jiyi"]
+[ext_resource type="Texture2D" uid="uid://70l3nyp2awuc" path="res://assets/explode2.PNG" id="4_75ble"]
+[ext_resource type="Texture2D" uid="uid://ccaoesrug13vq" path="res://assets/explode3.PNG" id="5_0xwsy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flnva"]
 atlas = ExtResource("2_8chg6")
 region = Rect2(0, 0, 245, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmleo"]
+atlas = ExtResource("3_5jiyi")
+region = Rect2(0, 0, 224, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a62pt"]
+atlas = ExtResource("4_75ble")
+region = Rect2(0, 0, 224, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgf6a"]
+atlas = ExtResource("5_0xwsy")
+region = Rect2(0, 0, 224, 155)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5jiyi"]
 animations = [{
@@ -16,6 +31,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmleo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a62pt")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qgf6a")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmj5x"]
@@ -25,6 +54,10 @@ script = ExtResource("1_mmj5x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5jiyi")
+animation = &"explode"
+autoplay = "default"
+frame_progress = 0.58837074
+speed_scale = 1.29
 
 [node name="Area2D" type="Area2D" parent="." groups=["monster_1_area"]]
 

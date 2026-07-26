@@ -1,13 +1,11 @@
 extends Node2D
 
-@onready var score_ui = get_tree().get_first_node_in_group("score_ui")
-@onready var sprite = $AnimatedSprite2D
-@onready var health_bar = get_tree().get_first_node_in_group("health_bar")
+@onready var score_ui = $"../Score"
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
 @onready var attack_area = get_tree().get_first_node_in_group("attack_area")
 @onready var player = get_tree().get_first_node_in_group("player")
 
-@export var speed = 250
+@export var speed = 150
 
 var score = 0
 var start_position_x = 0
@@ -56,9 +54,9 @@ func _process(delta):
 		score += 1
 		score_ui.text = "Score: " + str(score)
 
-<<<<<<< Updated upstream
-		if score >= 3:
+		if score >= 10:
 			score = 0
+			Global.lives = 5
 			get_tree().change_scene_to_file("res://levelpassed.tscn")
 			return
 
@@ -66,25 +64,14 @@ func _process(delta):
 		respawn()
 
 	elif kill_line_area.can_interact and lane == player.lane:
-=======
-		await get_tree().create_timer(1.0).timeout
-
-		position = start_position_x
-		position.y = [lane1, lane2, lane3, lane4].pick_random()
-
-		visible = true
-		resetting = false
-
-	elif kill_line_area.can_interact:
->>>>>>> Stashed changes
 		resetting = true
 		visible = false
 
-		health_bar.value -= 20
+		Global.lives -= 1
 
-		if health_bar.value <= 0:
+		if Global.lives <= 0:
 			score = 0
-			health_bar.value = 100
+			Global.lives = 5
 			ScreenManager.fail_level()
 			return
 

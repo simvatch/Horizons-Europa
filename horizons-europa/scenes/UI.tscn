@@ -5,46 +5,38 @@
 [ext_resource type="Texture2D" uid="uid://dhqk6llw2jc5" path="res://assets/health_bar_progress.PNG" id="3_3wlde"]
 [ext_resource type="Texture2D" uid="uid://bfvxvkp2vqynd" path="res://assets/health_bar_head.PNG" id="4_xpksx"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.072000004
-anchor_top = 0.055000003
-anchor_right = 0.372
-anchor_bottom = 0.126
-offset_left = 0.7599945
-offset_top = -0.40000534
-offset_right = 0.76000977
-offset_bottom = -0.08000183
+anchor_left = 0.074
+anchor_top = 0.031000001
+anchor_right = 0.37500003
+anchor_bottom = 0.102000006
+offset_left = 1.9199982
+offset_top = -0.48000336
+offset_right = -6.1035156e-05
+offset_bottom = -0.16000366
 texture = ExtResource("1_ua6yw")
 
-[node name="health_bar" type="TextureProgressBar" parent="." groups=["health_bar"]]
-layout_mode = 1
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." groups=["health_bar"]]
 anchors_preset = -1
-anchor_left = 0.072000004
-anchor_top = 0.055000003
-anchor_right = 0.372
-anchor_bottom = 0.126
-offset_left = 0.7599945
-offset_top = -0.40000534
-offset_right = 0.76000977
+anchor_left = 0.07300001
+anchor_top = 0.030000001
+anchor_right = 0.374
+anchor_bottom = 0.101
+offset_left = 2.839981
+offset_top = -0.40000153
+offset_right = 0.9199829
 offset_bottom = -0.08000183
+value = 100.0
 texture_under = ExtResource("2_75u2n")
 texture_progress = ExtResource("3_3wlde")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.119
 anchor_bottom = 0.15900001
-offset_right = -188.48001
-offset_bottom = -131.72002
+offset_right = -0.480011
+offset_bottom = 0.27998352
 texture = ExtResource("4_xpksx")
