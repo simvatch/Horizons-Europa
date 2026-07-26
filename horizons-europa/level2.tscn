@@ -36,13 +36,12 @@ metadata/_edit_use_anchors_ = true
 [node name="kill_line" parent="." instance=ExtResource("4_rmy57")]
 position = Vector2(1464, 540)
 
-[node name="monster_1" parent="." groups=["player"] instance=ExtResource("3_8i3m3")]
+[node name="monster_1" parent="." instance=ExtResource("3_8i3m3")]
 position = Vector2(-155, 344)
-speed = 350
 
-[node name="monster_2" parent="." groups=["player"] instance=ExtResource("3_8i3m3")]
-position = Vector2(-155, 344)
+[node name="monster_2" parent="." instance=ExtResource("3_8i3m3")]
+position = Vector2(-463, 665)
 speed = 150
 
-[node name="attack" parent="." instance=ExtResource("5_qulpo")]
+[node name="attack" parent="." groups=["player"] instance=ExtResource("5_qulpo")]
 position = Vector2(1623, 791)
