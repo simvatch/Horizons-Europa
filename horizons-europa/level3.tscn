@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="3_bmsap"]
 [ext_resource type="Texture2D" uid="uid://bce0oj2ofnx80" path="res://assets/otter.PNG" id="3_i2041"]
 [ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_rqrji"]
-[ext_resource type="PackedScene" path="res://scenes/note.tscn" id="4_xy4tn"]
+[ext_resource type="PackedScene" uid="uid://cvjekn0sr1kd8" path="res://scenes/note.tscn" id="4_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="5_8x87a"]
 
 [node name="Node2D" type="Node2D"]

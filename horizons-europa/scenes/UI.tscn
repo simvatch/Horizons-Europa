@@ -32,6 +32,7 @@ offset_bottom = -0.08000183
 value = 100.0
 texture_under = ExtResource("2_75u2n")
 texture_progress = ExtResource("3_3wlde")
+texture_over = ExtResource("1_ua6yw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = -1
