@@ -13,6 +13,8 @@ var score := 0
 var start_position_x := 0.0
 var resetting := false
 var lane := 1
+var lane_switch_cooldown := 0.0
+var is_slowest := false
 
 const LANE_Y = {
 	1: 343,
@@ -24,6 +26,7 @@ const LANE_Y = {
 
 func _ready():
 	start_position_x = position.x
+	is_slowest = is_in_group("slowest_monster")
 	respawn()
 
 	if score_ui:
@@ -35,6 +38,16 @@ func _process(delta):
 		return
 
 	position.x += speed * delta
+
+	if lane_switch_cooldown > 0:
+		lane_switch_cooldown -= delta
+
+	# Random lane switching for slowest monster
+	if is_slowest and lane_switch_cooldown <= 0 and randf() < 0.02:
+		var new_lane = randi_range(1, 4)
+		if new_lane != lane:
+			set_lane(new_lane)
+			lane_switch_cooldown = 1.0
 
 	if player == null:
 		return

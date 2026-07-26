@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://duj1hcnloeng5"]
+[gd_scene load_steps=6 format=3 uid="uid://4cv3ywpemote"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_an40m"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_mu84n"]
@@ -20,7 +20,7 @@ offset_right = 1456.0
 offset_bottom = 985.0
 texture = ExtResource("2_mu84n")
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="." groups=["score_ui"]]
 offset_left = 262.0
 offset_top = 21.0
 offset_right = 449.0
@@ -31,9 +31,18 @@ text = "Score:"
 
 [node name="monster_1" parent="." instance=ExtResource("3_bmsap")]
 position = Vector2(123, 343)
+speed = 350
 
-[node name="attack" parent="." instance=ExtResource("4_rqrji")]
-position = Vector2(1296, 351)
+[node name="monster_2" parent="." instance=ExtResource("3_bmsap")]
+position = Vector2(-195, 489)
+speed = 300
+
+[node name="monster_3" parent="." groups=["slowest_monster"] instance=ExtResource("3_bmsap")]
+position = Vector2(-187, 680)
+speed = 200
+
+[node name="attack" parent="." groups=["player"] instance=ExtResource("4_rqrji")]
+position = Vector2(1621, 353)
 
 [node name="kill_line" parent="." instance=ExtResource("5_8x87a")]
 position = Vector2(1452, 561)
