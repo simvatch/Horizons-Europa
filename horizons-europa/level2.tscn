@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6ogow010us60"]
+[gd_scene load_steps=9 format=3 uid="uid://c6ogow010us60"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_r6vdu"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_21xmu"]
 [ext_resource type="PackedScene" uid="uid://b2i6h3jlc7uhg" path="res://scenes/UI.tscn" id="3_0c2vd"]
+[ext_resource type="Texture2D" uid="uid://bce0oj2ofnx80" path="res://assets/otter.PNG" id="3_i2041"]
 [ext_resource type="PackedScene" uid="uid://cg6kj1jmnlfx8" path="res://scenes/monster_1.tscn" id="3_8i3m3"]
 [ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="4_rmy57"]
 [ext_resource type="PackedScene" uid="uid://cvjekn0sr1kd8" path="res://scenes/note.tscn" id="4_xy4tn"]
@@ -26,6 +27,13 @@ offset_top = 166.0
 offset_right = 1458.0
 offset_bottom = 985.0
 texture = ExtResource("2_21xmu")
+
+[node name="mascot" type="TextureRect" parent="."]
+offset_left = 1541.0
+offset_top = 265.0
+offset_right = 1921.0
+offset_bottom = 1090.0
+texture = ExtResource("3_i2041")
 
 [node name="Score" type="Label" parent="." groups=["score_ui"]]
 offset_left = 262.0
