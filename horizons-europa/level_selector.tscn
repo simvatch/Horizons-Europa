@@ -1,30 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://xsspryoe5fnq"]
+[gd_scene load_steps=8 format=3 uid="uid://xsspryoe5fnq"]
 
 [ext_resource type="Script" uid="uid://cfnw6eufx4ooa" path="res://level_selector.gd" id="1_lc76m"]
+[ext_resource type="Texture2D" uid="uid://dbx4ysdgkatf7" path="res://backdrop.png" id="2_3o3bh"]
 [ext_resource type="Script" uid="uid://dmc2o3hea6nxj" path="res://carousel_container.gd" id="2_5xyw6"]
+[ext_resource type="Texture2D" uid="uid://bfiyoaw47yr2n" path="res://assets/disk.png" id="3_2db0o"]
+[ext_resource type="Theme" uid="uid://b0sheakp7mip5" path="res://button.tres" id="3_7d84g"]
+[ext_resource type="FontFile" uid="uid://cnkbpmgl4jm16" path="res://RockSalt-Regular.ttf" id="4_h538p"]
+[ext_resource type="Texture2D" uid="uid://bucueoiy0hygc" path="res://assets/disk2.png" id="4_sn3u0"]
 
 [node name="level_selector" type="Node2D"]
 script = ExtResource("1_lc76m")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -6.0
+offset_right = 1914.0
+offset_bottom = 1074.0
+texture = ExtResource("2_3o3bh")
+
 [node name="left" type="Button" parent="."]
-offset_left = 3.0
-offset_top = 287.0
-offset_right = 98.0
-offset_bottom = 350.0
-text = "left"
+offset_left = 27.0
+offset_top = 506.0
+offset_right = 310.0
+offset_bottom = 649.0
+theme = ExtResource("3_7d84g")
+theme_override_fonts/font = ExtResource("4_h538p")
+theme_override_font_sizes/font_size = 50
+text = "Left"
 
 [node name="right" type="Button" parent="."]
-offset_left = 1053.0
-offset_top = 279.0
-offset_right = 1148.0
-offset_bottom = 342.0
-text = "right"
+offset_left = 1613.0
+offset_top = 499.0
+offset_right = 1892.0
+offset_bottom = 635.0
+theme = ExtResource("3_7d84g")
+theme_override_fonts/font = ExtResource("4_h538p")
+theme_override_font_sizes/font_size = 50
+text = "Right"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
-offset_left = 508.0
-offset_top = 365.0
-offset_right = 1660.0
-offset_bottom = 1010.0
+offset_left = 917.0
+offset_top = 527.0
+offset_right = 1443.0
+offset_bottom = 605.0
 alignment = 1
 vertical = true
 
@@ -36,31 +53,62 @@ metadata/_custom_type_script = "uid://dmc2o3hea6nxj"
 [node name="Control" type="Control" parent="BoxContainer/CarouselContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -29.499989
+offset_left = -266.0365
 offset_top = -20.0
-offset_right = 10.500011
+offset_right = -226.0365
 offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
 
-[node name="level1" type="Button" parent="BoxContainer/CarouselContainer/Control"]
+[node name="level1" type="TextureButton" parent="BoxContainer/CarouselContainer/Control"]
 z_index = 1
-layout_mode = 0
-offset_top = -16.0
-offset_right = 59.000015
-offset_bottom = 16.0
-pivot_offset = Vector2(29.500008, 16)
-text = "level 1"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.0547385
+anchor_top = -6.4100075
+anchor_right = -10.285074
+anchor_bottom = -11.737842
+offset_left = 202.18954
+offset_top = -9.599701
+offset_right = 943.47595
+offset_bottom = 735.5137
+pivot_offset = Vector2(266.0365, 266)
+texture_normal = ExtResource("3_2db0o")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="level2" type="Button" parent="BoxContainer/CarouselContainer/Control"]
+[node name="level2" type="TextureButton" parent="BoxContainer/CarouselContainer/Control"]
 modulate = Color(1, 1, 1, 0.65)
 z_index = -1
-layout_mode = 0
-offset_left = 79.000015
-offset_top = -16.0
-offset_right = 138.00003
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -12.965317
+anchor_top = -11.0960245
+anchor_right = -26.015224
+anchor_bottom = -23.86774
+offset_left = 1070.6857
+offset_top = 293.83975
+offset_right = 1893.6779
+offset_bottom = 1104.7108
 scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(29.500008, 16)
-text = "level 2"
+pivot_offset = Vector2(150.49792, 150.00122)
+focus_mode = 0
+mouse_filter = 2
+texture_normal = ExtResource("4_sn3u0")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 608.0
+offset_top = 5.0
+offset_right = 1206.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("4_h538p")
+theme_override_font_sizes/font_size = 75
+text = "Pick a song"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
