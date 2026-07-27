@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2i6h3jlc7uhg"]
+[gd_scene load_steps=6 format=3 uid="uid://b2i6h3jlc7uhg"]
 
 [ext_resource type="Texture2D" uid="uid://c0hsrakytbbyc" path="res://assets/health_bar_outline.PNG" id="1_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://bha2v5wh26ysn" path="res://assets/health_bar_base.PNG" id="2_75u2n"]
 [ext_resource type="Texture2D" uid="uid://dhqk6llw2jc5" path="res://assets/health_bar_progress.PNG" id="3_3wlde"]
 [ext_resource type="Texture2D" uid="uid://bfvxvkp2vqynd" path="res://assets/health_bar_head.PNG" id="4_xpksx"]
+[ext_resource type="Script" uid="uid://i6v58wgynkgl" path="res://scripts/health_bar.gd" id="5_hbscr"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -32,7 +33,7 @@ offset_bottom = -0.08000183
 value = 100.0
 texture_under = ExtResource("2_75u2n")
 texture_progress = ExtResource("3_3wlde")
-texture_over = ExtResource("1_ua6yw")
+script = ExtResource("5_hbscr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = -1

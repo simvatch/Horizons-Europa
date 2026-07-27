@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4cv3ywpemote"]
+[gd_scene load_steps=10 format=3 uid="uid://4cv3ywpemote"]
 
 [ext_resource type="Texture2D" uid="uid://b2yy1thxrk3sw" path="res://assets/background.PNG" id="1_an40m"]
 [ext_resource type="Texture2D" uid="uid://bb6qjki5tmtum" path="res://assets/lanes.PNG" id="2_mu84n"]
@@ -8,9 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cjg5bgjk8s7np" path="res://scenes/attack.tscn" id="4_rqrji"]
 [ext_resource type="PackedScene" uid="uid://cvjekn0sr1kd8" path="res://scenes/note.tscn" id="4_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://lsj8panjfsyn" path="res://scenes/kill_line.tscn" id="5_8x87a"]
+[ext_resource type="AudioStream" uid="uid://cefctvphyi6wr" path="res://Level3.mp3" id="6_music"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_music")
+autoplay = true
 
 [node name="health bar" parent="." instance=ExtResource("3_0c2vd")]
 
@@ -33,10 +38,10 @@ offset_bottom = 1090.0
 texture = ExtResource("3_i2041")
 
 [node name="Score" type="Label" parent="." groups=["score_ui"]]
-offset_left = 262.0
-offset_top = 21.0
-offset_right = 449.0
-offset_bottom = 65.0
+offset_left = 743.0
+offset_top = 49.0
+offset_right = 930.0
+offset_bottom = 93.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score:"

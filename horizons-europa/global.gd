@@ -6,5 +6,6 @@ var level = 1
 
 var score_needed = {
 	1: 3,
-	2: 10
+	2: 10,
+	3: 15
 }

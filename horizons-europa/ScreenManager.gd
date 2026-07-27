@@ -8,6 +8,7 @@ func fail_level():
 
 func retry_current_level():
 	if last_level_path != "":
+		Global.score = 0
 		get_tree().change_scene_to_file(last_level_path)
 
 func go_to(scene_path: String):

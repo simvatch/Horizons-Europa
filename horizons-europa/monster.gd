@@ -1,6 +1,10 @@
 extends Node2D
 
-@onready var sprite = get_tree().get_first_node_in_group("monster_sprite")
+# Own nodes — must NOT be looked up by group, or every monster shares one instance
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var area: Area2D = $Area2D
+
+# Shared level nodes — one per level, group lookup is correct here
 @onready var score_ui = get_tree().get_first_node_in_group("score_ui")
 @onready var health_bar = get_tree().get_first_node_in_group("health_bar")
 @onready var kill_line_area = get_tree().get_first_node_in_group("kill_line_area")
@@ -9,13 +13,14 @@ extends Node2D
 
 @export var speed := 250.0
 
-var score := 0
+const DAMAGE_PER_MISS := 20.0  # 100 health / 20 = 5 lives
+
 var start_position_x := 0.0
 var resetting := false
 var lane := 1
 var lane_switch_cooldown := 0.0
 var is_slowest := false
-var moving = true
+var moving := true
 
 const LANE_Y = {
 	1: 343,
@@ -29,9 +34,7 @@ func _ready():
 	start_position_x = position.x
 	is_slowest = is_in_group("slowest_monster")
 	respawn()
-
-	if score_ui:
-		score_ui.text = "Score: 0"
+	update_score_ui()
 
 
 func _process(delta):
@@ -51,17 +54,14 @@ func _process(delta):
 	if resetting or player == null:
 		return
 
-	# Successful hit
-	if attack_area.can_interact and lane == player.lane:
-		sprite.play("explode")
+	var overlaps = area.get_overlapping_areas()
+
+	# Struck by the disc while sharing its lane
+	if overlaps.has(attack_area) and lane == player.lane:
 		handle_hit()
 
-	# Missed note in correct lane
-	elif kill_line_area.can_interact and lane == player.lane:
-		handle_pass()
-
-	# Missed note entirely
-	elif kill_line_area.can_interact:
+	# Got past the player and reached the laser — always costs a life
+	elif overlaps.has(kill_line_area):
 		handle_miss()
 
 
@@ -78,27 +78,25 @@ func respawn():
 	resetting = false
 
 
+func update_score_ui():
+	if score_ui:
+		score_ui.text = "Score: " + str(Global.score)
+
+
 func handle_hit():
 	resetting = true
 	await explosion()
 	visible = false
 
-	score += 1
+	Global.score += 1
+	update_score_ui()
 
-	if score_ui:
-		score_ui.text = "Score: " + str(score)
+	var score_needed = Global.score_needed.get(Global.level, 10)
+	if Global.score >= score_needed:
+		get_tree().change_scene_to_file("res://levelpassed.tscn")
+		return
 
-	if get_tree():
-		await get_tree().create_timer(1.0).timeout
-	respawn()
-
-func handle_pass():
-	resetting = true
-	await explosion()
-	visible = false
-
-	if get_tree():
-		await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	respawn()
 
 
@@ -106,24 +104,21 @@ func handle_miss():
 	resetting = true
 
 	if health_bar:
-		health_bar.value -= 20
+		health_bar.value -= DAMAGE_PER_MISS
 
 		if health_bar.value <= 0:
-			score = 0
-			health_bar.value = 100
-
-			if score_ui:
-				score_ui.text = "Score: 0"
-
+			health_bar.value = health_bar.max_value
+			Global.score = 0
+			update_score_ui()
 			ScreenManager.fail_level()
 			return
 
 	await explosion()
 	visible = false
 
-	if get_tree():
-		await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	respawn()
+
 
 func explosion():
 	moving = false
